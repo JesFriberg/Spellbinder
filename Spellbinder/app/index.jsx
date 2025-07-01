@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, Pressable } from "react-native";
 import spellbinderLogo from "@/assets/images/Spellbinder_logo.png";
 import React from "react";
 import { Link } from "expo-router";
@@ -8,9 +8,16 @@ const app = () => {
     <View style={styles.container}>
       <Image source={spellbinderLogo} style={styles.image} resizeMode="contain"></Image>
       <Text style={styles.text}>Lorem ipsum</Text>
-      <Link href="/explore" style={styles.linkText}>
-        Explore
+      <Link href="/spellList" style={{ marginHorizontal: "auto" }} asChild>
+        <Pressable style={styles.button}>
+          <Text style={styles.linkText}>Spell List</Text>
+        </Pressable>
       </Link>
+      {/* <Link href="/explore" style={{ marginHorizontal: "auto" }} asChild>
+        <Pressable style={styles.button}>
+          <Text style={styles.linkText}>Explore</Text>
+        </Pressable>
+      </Link> */}
     </View>
   );
 };
@@ -37,10 +44,15 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   linkText: {
-    color: "white",
-    fontSize: 40,
+    color: "black",
+    fontSize: 16,
     fontWeight: "bold",
     textAlign: "center",
-    textDecorationLine: "underline",
+  },
+  button: {
+    padding: 20,
+    borderRadius: 20,
+    backgroundColor: "rgba(255,255,255,0.9)",
+    justifyContent: "center",
   },
 });
