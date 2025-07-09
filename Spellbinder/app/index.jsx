@@ -13,11 +13,6 @@ const app = () => {
           <Text style={styles.linkText}>Spell List</Text>
         </Pressable>
       </Link>
-      {/* <Link href="/explore" style={{ marginHorizontal: "auto" }} asChild>
-        <Pressable style={styles.button}>
-          <Text style={styles.linkText}>Explore</Text>
-        </Pressable>
-      </Link> */}
     </View>
   );
 };
