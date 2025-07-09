@@ -1,7 +1,6 @@
 import { View, Text, StyleSheet, Pressable } from "react-native";
 import React, { useState, useEffect } from "react";
-import SpellContainer from "@/components/containers/spellContainer";
-import spellData from "@/constants/spells.json";
+import axios from "axios";
 
 const spellList = () => {
   const [data, setData] = useState(1);
@@ -9,10 +8,43 @@ const spellList = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setErrorFlag] = useState(false);
 
+  useEffect(() => {
+    const abortController = new AbortController();
+    const url = "https://www.dnd5eapi.co/api/2014/spells/?name=Acid+Arrow";
+
+    const fetchSpell = async () => {
+      try {
+        setIsLoading(true);
+
+        const response = await axios.get(url, { signal: abortController.signal });
+
+        if (response.status === 200) {
+          console.log(response.data);
+
+          setData(response.data);
+
+          setIsLoading(false);
+          return;
+        } else {
+          throw new Error("Failed to fetch data");
+        }
+      } catch (error) {
+        if (abortController.signal.aborted) {
+          console.log("Data fetch aborted");
+        } else {
+          setErrorFlag(true);
+          setIsLoading(false);
+        }
+      }
+    };
+    fetchSpell();
+    return () => abortController.abort("Data fetching cancelled");
+  }, [fetch]);
+
   return (
     <View style={styles.container}>
       {/* <Text style={styles.text}>Spell List</Text> */}
-      {/* <Pressable
+      <Pressable
         style={styles.button}
         onPress={() => {
           setFetch(fetch ? false : true);
@@ -20,11 +52,8 @@ const spellList = () => {
         }}
       >
         <Text style={styles.fetchText}>Fetch Spell</Text>
-      </Pressable> */}
-      <Text style={styles.text}>Spells</Text>
-      <View style={styles.container}>
-        <SpellContainer name={spellData[0].name} />
-      </View>
+      </Pressable>
+      <Text style={styles.text}>{data !== 1 ? data.results[0].index : ""}</Text>
     </View>
   );
 };
