@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import SpellContainer from "@/components/containers/spellContainer";
 import spellData from "@/constants/spells.json";
 
-const spellList = () => {
+const SpellList = () => {
   const [data, setData] = useState(1);
   const [fetch, setFetch] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
@@ -21,7 +21,7 @@ const spellList = () => {
   );
 };
 
-export default spellList;
+export default SpellList;
 
 const styles = StyleSheet.create({
   container: {
