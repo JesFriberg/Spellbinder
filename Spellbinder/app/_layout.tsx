@@ -22,6 +22,7 @@ export default function RootLayout() {
       <Stack>
         <Stack.Screen name="index" options={{ title: "Home", headerShown: false }} />
         <Stack.Screen name="spellList" options={{ title: "Spell List" }} />
+        <Stack.Screen name="SpellInfo" options={{ title: "Spell Info", presentation: "modal" }} />
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />

@@ -14,7 +14,7 @@ const spellList = () => {
       <Text style={styles.headerText}>Spells</Text>
       <ScrollView style={styles.spellListContainer}>
         {spellData.map((spell, index) => {
-          return <SpellContainer name={spell.name} key={index} />;
+          return <SpellContainer data={spell} number={index} key={index} />;
         })}
       </ScrollView>
     </View>
