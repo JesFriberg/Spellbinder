@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Pressable } from "react-native";
+import { View, Text, StyleSheet, Pressable, ScrollView } from "react-native";
 import React, { useState, useEffect } from "react";
 import SpellContainer from "@/components/containers/spellContainer";
 import spellData from "@/constants/spells.json";
@@ -11,20 +11,14 @@ const spellList = () => {
 
   return (
     <View style={styles.container}>
-      {/* <Text style={styles.text}>Spell List</Text> */}
-      {/* <Pressable
-        style={styles.button}
-        onPress={() => {
-          setFetch(fetch ? false : true);
-          console.log("Fetching...");
-        }}
-      >
-        <Text style={styles.fetchText}>Fetch Spell</Text>
-      </Pressable> */}
-      <Text style={styles.text}>Spells</Text>
-      <View style={styles.container}>
-        <SpellContainer name={spellData[0].name} />
-      </View>
+      <Text style={styles.headerText}>Spells</Text>
+      <ScrollView style={styles.spellListContainer}>
+        {/* <SpellContainer name={spellData[0].name} />
+        <SpellContainer name={spellData[1].name} /> */}
+        {spellData.map((spell, index) => {
+          return <SpellContainer name={spell.name} key={index} />;
+        })}
+      </ScrollView>
     </View>
   );
 };
@@ -36,6 +30,14 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     marginTop: "7%",
+    // backgroundColor: "blue",
+  },
+  spellListContainer: {
+    flex: 1,
+    marginTop: "5%",
+    marginBottom: "7%",
+    flexDirection: "column",
+    // backgroundColor: "red",
   },
   fetchText: {
     color: "white",
@@ -44,9 +46,9 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginBottom: 50,
   },
-  text: {
+  headerText: {
     color: "white",
-    fontSize: 20,
+    fontSize: 40,
     fontWeight: "500",
     textAlign: "center",
   },
