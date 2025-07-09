@@ -3,12 +3,12 @@ import spellbinderLogo from "@/assets/images/Spellbinder_logo.png";
 import React from "react";
 import { Link } from "expo-router";
 
-const App = () => {
+const app = () => {
   return (
     <View style={styles.container}>
       <Image source={spellbinderLogo} style={styles.image} resizeMode="contain"></Image>
       <Text style={styles.text}>Lorem ipsum</Text>
-      <Link href="/SpellList" style={{ marginHorizontal: "auto" }} asChild>
+      <Link href="/spellList" style={{ marginHorizontal: "auto" }} asChild>
         <Pressable style={styles.button}>
           <Text style={styles.linkText}>Spell List</Text>
         </Pressable>
@@ -17,7 +17,7 @@ const App = () => {
   );
 };
 
-export default App;
+export default app;
 
 const styles = StyleSheet.create({
   container: {
