@@ -15,7 +15,41 @@ function SpellInfo() {
     <View style={styles.container}>
       <ImageBackground source={infoBackground} style={styles.image} resizeMode="cover">
         <ScrollView style={{ flexDirection: "column" }} contentInset={{ bottom: 100 }}>
+          {/*Spell name*/}
           <Text style={styles.header}>{SpellData[spellIndex].name}</Text>
+          {/*Spell level, spell school, classes that can cast*/}
+          <Text style={styles.schoolText}>
+            {"Level " +
+              SpellData[spellIndex].level +
+              " " +
+              SpellData[spellIndex].school +
+              " \n" +
+              SpellData[spellIndex].classes.join(", ")}
+          </Text>
+          {/*Spell casting time*/}
+          <Text style={{ ...styles.infoText, paddingTop: 10, fontWeight: 800 }}>
+            Casting Time:
+            <Text style={{ ...styles.infoText, fontFamily: "OpenSans" }}>
+              {" " + SpellData[spellIndex].casting_time}
+            </Text>
+          </Text>
+          {/*Spell range*/}
+          <Text style={{ ...styles.infoText, fontWeight: 800 }}>
+            Range:
+            <Text style={{ ...styles.infoText, fontFamily: "OpenSans" }}>{" " + SpellData[spellIndex].range}</Text>
+          </Text>
+          {/*Spell components*/}
+          <Text style={{ ...styles.infoText, fontWeight: 800 }}>
+            Components:
+            <Text style={{ ...styles.infoText, fontFamily: "OpenSans" }}>
+              {" " + SpellData[spellIndex].components.join(", ")}
+            </Text>
+          </Text>
+          {/*Spell duration*/}
+          <Text style={{ ...styles.infoText, fontWeight: 800 }}>
+            Duration:
+            <Text style={{ ...styles.infoText, fontFamily: "OpenSans" }}>{" " + SpellData[spellIndex].duration}</Text>
+          </Text>
           <Text style={{ ...styles.text, fontFamily: "OpenSans" }}>{SpellData[spellIndex].description.General}</Text>
           {desc.slice(1).map((element, index) => {
             return (
@@ -54,12 +88,26 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     textAlign: "left",
   },
+  infoText: {
+    //color: "white",
+    fontSize: 18,
+    marginHorizontal: 25,
+    paddingVertical: 2,
+    textAlign: "left",
+  },
+  schoolText: {
+    fontSize: 18,
+    marginHorizontal: 25,
+    textAlign: "left",
+    fontStyle: "italic",
+  },
   header: {
     //color: "white",
     fontSize: 42,
     fontWeight: 700,
     textAlign: "left",
-    padding: 10,
+    paddingHorizontal: 10,
+    paddingTop: 10,
     marginHorizontal: 15,
     //backgroundColor: "rgba(117,117,117,0.4)",
   },
