@@ -50,6 +50,7 @@ function SpellInfo() {
             Duration:
             <Text style={{ ...styles.infoText, fontFamily: "OpenSans" }}>{" " + SpellData[spellIndex].duration}</Text>
           </Text>
+          {/*Spell description*/}
           <Text style={{ ...styles.text, fontFamily: "OpenSans" }}>{SpellData[spellIndex].description.General}</Text>
           {desc.slice(1).map((element, index) => {
             return (
@@ -98,6 +99,7 @@ const styles = StyleSheet.create({
   schoolText: {
     fontSize: 18,
     marginHorizontal: 25,
+    paddingTop: 5,
     textAlign: "left",
     fontStyle: "italic",
   },
